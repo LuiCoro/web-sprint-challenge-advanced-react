@@ -16,8 +16,9 @@ export default class PlantList extends Component {
         const plantList = res.data
         console.log('Res Data',res.data)
         
-        console.log('Plants', plantList)
-        this.setState(plantList)
+        this.state.plants = plantList
+        
+        this.setState([this.state.plants])
       });
   }
 
