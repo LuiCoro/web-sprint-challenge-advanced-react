@@ -75,6 +75,7 @@ You will also need to build the two tests in the `CheckoutForm.test.js` file and
 #### API Documentation
 * **[GET]** * to `http://localhost:3333/plants`: returns an array of objects of the following form
 ```js
+const Data =
 {
     name: "Peperomia Rosso",
     id: 143,
@@ -103,9 +104,18 @@ You will also need to build the two tests in the `CheckoutForm.test.js` file and
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. Add your answers to the questions within `interview_answers.md` file. These will not be counted as a part of your sprint score but will be helpful for preparing you for your endorsement interview, and enhancing overall understanding.
 
 1. What are the main differences between a stateful and a functional component?
+   The main differences between a stateful and a functional components is that Stateful components handle state and logic while its rendering on the screen  AND Functional components only accept data then render on screen
 
-2. When does a componentWillMount function be called? What about a componentWillUpdate?
+2.When does a componentWillMount function get called? What about a componentWillUpdate?
+componentWillMount gets called once before the render() and componentWillUpdate is called right before the component renders and right after shouldComponentUpdate
 
 3. Define stateful logic.
+   Stateful logic is basically any code that uses state.
 
 4. What are the three step of creating a successful test? What is done in each phase?
+   Step 1 Arrange:
+   render the React element to the DOM
+   
+   Step 2 Act: simulate user interaction/action
+   
+   Step 3 Assert: buttons are functioning properly , adding a expect() to make sure what we are testing is acutally showing up!
