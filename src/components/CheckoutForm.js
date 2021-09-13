@@ -1,6 +1,4 @@
-import React from "react";
-
-import useForm from '../hooks/useForm'
+import React, { useState } from "react";
 
 const initialValue = {
   firstName: "",
@@ -16,8 +14,18 @@ const initialValue = {
 // and replace the necessary stateful logic from CheckoutForm with the hook
 
 const CheckoutForm = (props) => {
-  const [values, handleChanges, handleSubmit , showSuccessMessage] = useForm(initialValue);
-  
+  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const [values, setValues] = useState(initialValue);
+
+  const handleChanges = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setShowSuccessMessage(true);
+  };
+
   return (
     <>
       <form onSubmit={handleSubmit}>
@@ -48,27 +56,27 @@ const CheckoutForm = (props) => {
         </label>
         <label>
           City:
-          <input name="city" value={values.city} onChange={handleChanges}/>
+          <input name="city" value={values.city} onChange={handleChanges} />
         </label>
         <label>
           State:
-          <input name="state" value={values.state} onChange={handleChanges}/>
+          <input name="state" value={values.state} onChange={handleChanges} />
         </label>
         <label>
           Zip:
-          <input name="zip" value={values.zip} onChange={handleChanges}/>
+          <input name="zip" value={values.zip} onChange={handleChanges} />
         </label>
         <button>Checkout</button>
       </form>
-      
+
       {showSuccessMessage && (
         <div className="success-message" data-testid="successMessage">
           <p>
             You have ordered some plants! Woo-hoo! <span role="img">🎉</span>
           </p>
           <p>Your new green friends will be shipped to:</p>
-          <br/>
-          <br/>
+          <br />
+          <br />
           <p>
             {values.firstName} {values.lastName}
           </p>
