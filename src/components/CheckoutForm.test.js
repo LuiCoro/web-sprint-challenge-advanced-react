@@ -12,23 +12,23 @@ test("renders without errors", () => {
   expect(header).toBeInTheDocument()
 });
 
-test("shows success message on submit with form details", async () => {
+test("shows success message on submit with form details",  () => {
   render(<CheckoutForm/>)
   const firstNameInput = screen.queryByLabelText(/first name:/i)
-  userEvent.type(firstNameInput, 'Sherlock')
+  userEvent.type(firstNameInput, 'OMi')
   const lastNameInput = screen.queryByLabelText(/last name:/i)
-  userEvent.type(lastNameInput, 'Holmes')
+  userEvent.type(lastNameInput, 'space')
   const addressInput = screen.queryByLabelText(/address:/i)
-  userEvent.type(addressInput, '221B Baker St.')
+  userEvent.type(addressInput, 'National Space Station')
   const cityInput = screen.queryByLabelText(/city:/i)
-  userEvent.type(cityInput, 'Westminster')
+  userEvent.type(cityInput, 'SPACE')
   const stateInput = screen.queryByLabelText(/state:/i)
-  userEvent.type(stateInput, 'UK')
+  userEvent.type(stateInput, 'CA')
   const zipCodeInput = screen.queryByLabelText(/zip:/i)
-  userEvent.type(zipCodeInput, 'SW1A')
+  userEvent.type(zipCodeInput, 'SP4C')
   const checkoutBTN = screen.getByRole('button')
   userEvent.click(checkoutBTN)
   
-  const successMessage = await screen.getByTestId('successMessage')
+  const successMessage = screen.getByTestId('successMessage')
   expect(successMessage).toBeInTheDocument()
 });
