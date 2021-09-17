@@ -10,9 +10,17 @@ export default class PlantList extends Component {
 
   componentDidMount() {
     axios.get('http://localhost:3333/plants')
-      .then(res => {
-        
-      });
+
+      .then(({data}) => {
+        console.log('Res Data', data)
+        this.setState({
+          plants: data
+        })
+      })
+      .catch(err => {
+        console.log('ERROR!', err)
+      })
+
   }
 
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
